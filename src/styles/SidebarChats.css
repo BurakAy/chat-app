@@ -1,0 +1,26 @@
+.sidebarchats--container {
+    background: #325c77;
+    height: 100%;
+}
+
+.sidebarchats {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #FFFFFF;
+    font-size: .9rem;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+.sidebarchats:hover {
+    background: #1f3949;
+}
+
+.sidebarchats img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}

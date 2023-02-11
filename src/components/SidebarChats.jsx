@@ -1,7 +1,13 @@
+import "../styles/SidebarChats.css";
+import userImage from "../assets/Burak_Ephesus.jpg";
+
 const SidebarChats = () => {
   return (
-    <div>
-      <h1>Chats</h1>
+    <div className="sidebarchats--container">
+      <div className="sidebarchats">
+        <img src={userImage} />
+        <p>Burak Aydemir</p>
+      </div>
     </div>
   );
 };
