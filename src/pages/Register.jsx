@@ -15,7 +15,7 @@ const Register = () => {
             <img src={imgIcon} /> Choose an avatar
             <input type="file" name="avatar" accept=".png, .jpg, .jpeg"></input>
           </label>
-          <button type="submit">Sign In</button>
+          <button type="submit">Sign Up</button>
         </form>
         <p className="register--sign_up">
           Already have an account?&nbsp;
