@@ -20,11 +20,11 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    gap: 10px;
     margin-bottom: 10px;
 }
 
 .register--form input {
-    margin-bottom: 10px;
     border-top: none;
     border-left: none;
     border-right: none;
