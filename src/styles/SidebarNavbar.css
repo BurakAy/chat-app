@@ -1,0 +1,40 @@
+.side-navbar--container {
+    background: #1d3557;
+    color: #FFFFFF;
+}
+
+.side-navbar--wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px
+}
+
+.side-navbar__appname {
+    margin-right: auto;
+    font-size: .9rem;
+    font-weight: 600;
+    letter-spacing: .04rem;
+}
+
+.side-navbar__user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    font-size: .75rem;
+}
+
+.side-navbar__user img {
+    width: 25px;
+}
+
+.side-navbar__logout {
+    background: #457b9d;
+    border: none;
+    color: #FFFFFF;
+    padding: 6px 8px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: .6rem;
+}
