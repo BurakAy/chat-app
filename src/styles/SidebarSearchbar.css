@@ -1,0 +1,20 @@
+.searchbar--container {
+    overflow: hidden;
+    background: #325c77;
+    border-bottom: 1px solid #ffffffb9;;
+}
+
+.finduser {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    border: none;
+    background: transparent;
+    color: #FFFFFF;
+    font-size: .70rem;
+    letter-spacing: .05rem;
+}
+
+.finduser::placeholder {
+    color: #ffffffb9;
+}
