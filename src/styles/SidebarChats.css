@@ -3,24 +3,38 @@
     height: 100%;
 }
 
-.sidebarchats {
+.sidebarchat {
     display: flex;
     align-items: center;
     gap: 8px;
     color: #FFFFFF;
     font-size: .9rem;
     cursor: pointer;
-    padding: 5px 10px;
+    padding: 10px;
 }
 
-.sidebarchats:hover {
+.sidebarchat:hover {
     background: #1f3949;
 }
 
-.sidebarchats img {
+.sidebarchat img {
     width: 35px;
     height: 35px;
     border-radius: 50%;
     object-fit: cover;
     object-position: center;
+}
+
+.sidebarchat--user {
+    font-weight: 600;
+}
+
+.sidebarchat--chat_info p {
+    margin: 0;
+}
+
+.sidebarchat--user_msg {
+    padding-top: 3px;
+    font-size: .75rem;
+    color: #ffffffb9;
 }
