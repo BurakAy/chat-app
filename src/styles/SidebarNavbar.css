@@ -27,6 +27,11 @@
 
 .side-navbar__user img {
     width: 25px;
+    height: 25px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    margin-right: 5px;
 }
 
 .side-navbar__logout {
