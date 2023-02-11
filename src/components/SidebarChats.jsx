@@ -1,5 +1,9 @@
 const SidebarChats = () => {
-  return <div></div>;
+  return (
+    <div>
+      <h1>Chats</h1>
+    </div>
+  );
 };
 
 export default SidebarChats;

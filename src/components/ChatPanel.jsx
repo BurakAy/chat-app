@@ -1,5 +1,11 @@
+import "../styles/ChatPanel.css";
+
 const ChatPanel = () => {
-  return <div></div>;
+  return (
+    <div className="chatpanel--container">
+      <h1>Chat Panel</h1>
+    </div>
+  );
 };
 
 export default ChatPanel;
