@@ -1,4 +1,5 @@
 import "../styles/SidebarSearchbar.css";
+import userImage from "../assets/Burak_Ephesus.jpg";
 
 const SidebarSearchbar = () => {
   return (
@@ -11,6 +12,10 @@ const SidebarSearchbar = () => {
             type="text"
             placeholder="Find a user"
           />
+        </div>
+        <div className="searchbar--result">
+          <img src={userImage} />
+          <p>Burak Aydemir</p>
         </div>
       </div>
     </div>

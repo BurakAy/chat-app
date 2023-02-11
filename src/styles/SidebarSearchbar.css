@@ -1,20 +1,46 @@
 .searchbar--container {
     overflow: hidden;
     background: #325c77;
-    border-bottom: 1px solid #ffffffb9;;
+    border-bottom: 1px solid #ffffffb9;
+}
+
+.searchbar--form {
+    padding: 10px;
 }
 
 .finduser {
     width: 100%;
     box-sizing: border-box;
-    padding: 10px;
     border: none;
     background: transparent;
     color: #FFFFFF;
     font-size: .70rem;
     letter-spacing: .05rem;
+    padding: 5px;
 }
 
 .finduser::placeholder {
     color: #ffffffb9;
+}
+
+.searchbar--result {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #FFFFFF;
+    font-size: .9rem;
+    cursor: pointer;
+    padding: 0 10px;
+}
+
+.searchbar--result:hover {
+    background: #1f3949;
+}
+
+.searchbar--result img {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
 }
