@@ -1,11 +1,11 @@
 .searchbar--container {
     overflow: hidden;
     background: #325c77;
-    border-bottom: 1px solid #ffffffb9;
+    border-bottom: 1px solid #ffffff3f;
 }
 
 .searchbar--form {
-    padding: 10px;
+    padding: 10px 10px 5px;
 }
 
 .finduser {
@@ -28,7 +28,7 @@
     align-items: center;
     gap: 5px;
     color: #FFFFFF;
-    font-size: .9rem;
+    font-size: .75rem;
     cursor: pointer;
     padding: 0 10px;
 }
