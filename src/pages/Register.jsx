@@ -12,7 +12,7 @@ const Register = () => {
           <input type="email" name="email" placeholder="email"></input>
           <input type="password" name="password" placeholder="password"></input>
           <label id="avatar-picker">
-            <img src={imgIcon} /> Choose an avatar
+            <img src={imgIcon} alt="add an avatar" /> Add an avatar
             <input type="file" name="avatar" accept=".png, .jpg, .jpeg"></input>
           </label>
           <button type="submit">Sign Up</button>
