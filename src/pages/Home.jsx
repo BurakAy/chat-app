@@ -1,7 +1,14 @@
+import ChatPanel from "../components/ChatPanel";
+import Sidebar from "../components/Sidebar";
+import "../styles/Home.css";
+
 const Home = () => {
   return (
-    <div>
-      <h1>Home</h1>
+    <div className="home--container">
+      <div className="home--wrapper">
+        <Sidebar />
+        <ChatPanel />
+      </div>
     </div>
   );
 };
