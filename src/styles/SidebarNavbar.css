@@ -16,6 +16,7 @@
     font-size: .9rem;
     font-weight: 600;
     letter-spacing: .04rem;
+    cursor: default;
 }
 
 .side-navbar__user {
@@ -24,6 +25,7 @@
     align-items: center;
     margin-right: 10px;
     font-size: .75rem;
+    cursor: default;
 }
 
 .side-navbar__user img {
