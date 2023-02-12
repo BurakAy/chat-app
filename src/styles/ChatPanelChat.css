@@ -1,0 +1,3 @@
+.chatpanelchat--container {
+    height: calc(100% - 100px);
+}
