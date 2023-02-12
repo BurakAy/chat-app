@@ -1,5 +1,6 @@
 .messageinput--wrapper {
     height: 50px;
+    display: flex;
 }
 
 .messageinput--wrapper input {
@@ -8,4 +9,44 @@
     border: none;
     width: 100%;
     padding: 0 10px;
+}
+
+.messageinput--icons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #FFFFFF;
+    padding-right: 10px;
+}
+
+.messageinput__file,
+.messageinput__img {
+    position: relative;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.messageinput__file svg,
+.messageinput__img svg {
+    cursor: pointer;
+}
+
+.messageinput__file input,
+.messageinput__img input {
+    visibility: hidden;
+    position: absolute;
+    left: 0;
+}
+
+.messageinput--icons button {
+    width: 60px;
+    height: 30px;
+    background: #457b9d;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
 }
