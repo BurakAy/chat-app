@@ -10,11 +10,11 @@ const MessageInput = () => {
         <div className="messageinput--icons">
           <label className="messageinput__file">
             <AttachFileIcon fontSize="medium" />
-            <input name="file" type="file" />
+            <input name="attachFile" type="file" />
           </label>
           <label className="messageinput__img">
             <PhotoIcon fontSize="medium" />
-            <input name="img" type="file" />
+            <input name="attachImg" type="file" />
           </label>
           <button type="submit">Send</button>
         </div>
