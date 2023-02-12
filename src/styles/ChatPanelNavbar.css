@@ -5,6 +5,13 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 10px;
+    color: #ffffffb9;
+}
+
+.chatpanelnavbar--user {
+    font-size: .9rem;
+    font-weight: 600;
+    cursor: default;
 }
 
 .chatpanelnavbar--icons {
