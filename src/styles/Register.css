@@ -14,7 +14,7 @@
 }
 
 .register--wrapper h1 { margin-bottom: 0; }
-.register--wrapper h3 { font-size: 1rem; }
+.register--wrapper h3 { font-size: .8rem; }
 
 .register--form {
     display: flex;
