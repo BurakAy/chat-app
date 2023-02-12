@@ -1,8 +1,8 @@
 import "../styles/Register.css";
-import imgIcon from "../assets/avatar_icon.svg";
 import PhotoIcon from "@mui/icons-material/Photo";
 import { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { app } from "../firebase";
 
 const Register = () => {
   const [userInfo, setUserInfo] = useState({
@@ -11,6 +11,7 @@ const Register = () => {
     password: "",
     avatar: "",
   });
+  const [registerError, setRegisterError] = useState(false);
 
   const handleUserInfoChange = (event) => {
     const name = event.target.name;
@@ -22,12 +23,28 @@ const Register = () => {
     });
   };
 
+  const handleRegistration = (event) => {
+    event.preventDefault();
+
+    // Initialize Firebase Authentication and get a reference to the service
+    const auth = getAuth(app);
+
+    createUserWithEmailAndPassword(auth, userInfo.email, userInfo.password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        setRegisterError(true);
+      });
+  };
+
   return (
     <div className="register--container">
       <div className="register--wrapper">
         <h1>ChatUp</h1>
-        <h3>Register</h3>
-        <form className="register--form">
+        <h3>Create Account</h3>
+        <form className="register--form" onSubmit={handleRegistration}>
           <input
             type="text"
             name="name"
@@ -60,6 +77,9 @@ const Register = () => {
             ></input>
           </label>
           <button type="submit">Sign Up</button>
+          {registerError && (
+            <p className="error-msg">There was an error signing up</p>
+          )}
         </form>
         <p className="register--sign_up">
           Already have an account?&nbsp;
