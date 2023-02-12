@@ -4,3 +4,11 @@
     align-items: center;
     height: 100vh;
 }
+
+.error-msg {
+    text-align: center;
+    margin: 0;
+    font-size: .75rem;
+    color: rgb(233, 13, 13);
+    font-weight: 600;
+}
