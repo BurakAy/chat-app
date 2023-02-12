@@ -1,5 +1,6 @@
 import "../styles/Register.css";
 import imgIcon from "../assets/avatar_icon.svg";
+import PhotoIcon from "@mui/icons-material/Photo";
 
 const Register = () => {
   return (
@@ -12,7 +13,7 @@ const Register = () => {
           <input type="email" name="email" placeholder="email"></input>
           <input type="password" name="password" placeholder="password"></input>
           <label id="avatar-picker">
-            <img src={imgIcon} alt="add an avatar" /> Add an avatar
+            <PhotoIcon fontSize="large" /> Add an avatar
             <input type="file" name="avatar" accept=".png, .jpg, .jpeg"></input>
           </label>
           <button type="submit">Sign Up</button>
