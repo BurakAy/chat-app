@@ -1,3 +1,8 @@
 .chatpanelchat--container {
     height: calc(100% - 100px);
+    overflow-y: scroll;
+}
+
+.chatpanelchat--container::-webkit-scrollbar {
+    width: 10px;
 }

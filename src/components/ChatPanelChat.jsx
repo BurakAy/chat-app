@@ -5,6 +5,7 @@ const ChatPanelChat = () => {
   return (
     <div className="chatpanelchat--container">
       <ChatPanelMessage />
+      <ChatPanelMessage />
     </div>
   );
 };
