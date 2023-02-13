@@ -1,16 +1,21 @@
 .register--container {
-    padding: 10px 50px;
-    width: 400px;
-    max-width: 400px;
-    background: #FFFFFF;
-    border-radius: 8px;
-    box-shadow: 1px 2px 10px #33333369;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .register--wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 10px 50px;
+    width: 400px;
+    max-width: 400px;
+    background: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 1px 2px 10px #33333369;
 }
 
 .register--wrapper h1 { margin-bottom: 0; }
