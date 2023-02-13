@@ -1,7 +1,12 @@
 import "../styles/Register.css";
 import PhotoIcon from "@mui/icons-material/Photo";
 import { useState } from "react";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  updateProfile,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
+import { doc, setDoc, getFirestore } from "firebase/firestore";
 import { app } from "../firebase";
 
 const Register = () => {
@@ -25,19 +30,63 @@ const Register = () => {
 
   const handleRegistration = (event) => {
     event.preventDefault();
-
-    // Initialize Firebase Authentication and get a reference to the service
-    const auth = getAuth(app);
-
-    createUserWithEmailAndPassword(auth, userInfo.email, userInfo.password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user);
-      })
-      .catch((error) => {
-        setRegisterError(true);
-      });
+    createUser();
   };
+
+  const createUser = () => {
+    try {
+      const auth = getAuth(app);
+      createUserWithEmailAndPassword(auth, userInfo.email, userInfo.password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          createProfile(user);
+        })
+        .catch((error) => {
+          setRegisterError(true);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const createProfile = (user) => {
+    try {
+      updateProfile(user, {
+        displayName: userInfo.name,
+        photoURL: userInfo.avatar,
+      })
+        .then(() => {
+          userDB(user);
+        })
+        .catch((error) => {
+          setRegisterError(true);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const userDB = (user) => {
+    try {
+      const db = getFirestore(app);
+      setDoc(doc(db, "users", user.uid), {
+        uid: user.uid,
+        displayName: user.displayName,
+        email: user.email,
+        photoURL: user.photoURL,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // const uploadImage = () => {
+  //   const storage = getStorage();
+  //   const storageRef = ref(storage, userInfo.avatar);
+  //   uploadBytes(storageRef, userInfo.avatar).then((snapshot) => {
+  //     console.log("Uploaded a blob or file!");
+  //   });
+  // };
 
   return (
     <div className="register--container">
