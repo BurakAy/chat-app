@@ -1,4 +1,5 @@
 import "../styles/Login.css";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
@@ -13,9 +14,7 @@ const Login = () => {
         </form>
         <p className="login--sign_up">
           Don't have an account?&nbsp;
-          <a href="" target="_blank">
-            Register
-          </a>
+          <Link to="/register">Register</Link>
         </p>
       </div>
     </div>

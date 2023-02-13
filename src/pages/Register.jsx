@@ -8,6 +8,8 @@ import {
 } from "firebase/auth";
 import { doc, setDoc, getFirestore } from "firebase/firestore";
 import { app } from "../firebase";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [userInfo, setUserInfo] = useState({
@@ -17,6 +19,7 @@ const Register = () => {
     avatar: "",
   });
   const [registerError, setRegisterError] = useState(false);
+  const navigate = useNavigate();
 
   const handleUserInfoChange = (event) => {
     const name = event.target.name;
@@ -75,18 +78,12 @@ const Register = () => {
         email: user.email,
         photoURL: user.photoURL,
       });
+      setDoc(doc(db, "userChats", user.uid), {});
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
   };
-
-  // const uploadImage = () => {
-  //   const storage = getStorage();
-  //   const storageRef = ref(storage, userInfo.avatar);
-  //   uploadBytes(storageRef, userInfo.avatar).then((snapshot) => {
-  //     console.log("Uploaded a blob or file!");
-  //   });
-  // };
 
   return (
     <div className="register--container">
@@ -132,9 +129,7 @@ const Register = () => {
         </form>
         <p className="register--sign_up">
           Already have an account?&nbsp;
-          <a href="" target="_blank">
-            Login
-          </a>
+          <Link to="/login">Login</Link>
         </p>
       </div>
     </div>
