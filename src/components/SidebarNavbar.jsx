@@ -8,7 +8,7 @@ const SidebarNavbar = () => {
         <p className="side-navbar__appname">ChatUp</p>
         <div className="side-navbar__user">
           <img src={userImage} className="side-navbar__user-avatar" />
-          <p>Burak Aydemir</p>
+          <p>Burak</p>
         </div>
         <button className="side-navbar__logout">logout</button>
       </div>
