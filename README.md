@@ -1,5 +1,6 @@
 # ChatUp
-<br>
-About
-<br>
-Uses Firbase for authentication, Firbase Storage for storing user images, and Firestore Database for storing users and user chats
+
+## Tech
+User Authentication: Firbase
+Storage: Firbase Storage (storing images)
+DB: Firestore Database (users and user chats)
