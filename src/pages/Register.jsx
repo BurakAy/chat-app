@@ -6,9 +6,11 @@ import {
   updateProfile,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { doc, setDoc, getFirestore } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { app } from "../firebase";
 
 const Register = () => {
   const [userInfo, setUserInfo] = useState({
@@ -36,8 +38,8 @@ const Register = () => {
   };
 
   const createUser = () => {
+    const auth = getAuth();
     try {
-      const auth = getAuth();
       createUserWithEmailAndPassword(auth, userInfo.email, userInfo.password)
         .then((userCredential) => {
           const user = userCredential.user;
@@ -55,10 +57,9 @@ const Register = () => {
     try {
       updateProfile(user, {
         displayName: userInfo.name,
-        photoURL: userInfo.avatar,
       })
         .then(() => {
-          userDB(user);
+          userImg(user);
         })
         .catch((error) => {
           setRegisterError(true);
@@ -68,16 +69,33 @@ const Register = () => {
     }
   };
 
-  const userDB = (user) => {
+  const userImg = async (user) => {
+    const storage = getStorage(app);
     try {
-      const db = getFirestore(app);
-      setDoc(doc(db, "users", user.uid), {
+      const storageRef = ref(storage, userInfo.name);
+      await uploadBytes(storageRef, userInfo.avatar);
+      await getDownloadURL(storageRef).then(async (downloadURL) => {
+        await updateProfile(user, {
+          displayName: userInfo.name,
+          photoURL: downloadURL,
+        });
+        await userDB(user, downloadURL);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const userDB = async (user, photoURL) => {
+    try {
+      const db = getFirestore();
+      await setDoc(doc(db, "users", user.uid), {
         uid: user.uid,
         displayName: user.displayName,
         email: user.email,
-        photoURL: user.photoURL,
+        photoURL: photoURL,
       });
-      setDoc(doc(db, "userChats", user.uid), {});
+      await setDoc(doc(db, "userChats", user.uid), {});
       navigate("/");
     } catch (error) {
       console.log(error);
