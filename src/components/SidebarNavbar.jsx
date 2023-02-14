@@ -1,5 +1,4 @@
 import "../styles/SidebarNavbar.css";
-import userImage from "../assets/Burak_Ephesus.jpg";
 import { getAuth, signOut } from "firebase/auth";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
