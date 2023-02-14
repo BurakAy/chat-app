@@ -1,6 +1,6 @@
 import "../styles/Register.css";
 import PhotoIcon from "@mui/icons-material/Photo";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import {
   getAuth,
   updateProfile,
@@ -10,17 +10,16 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { doc, setDoc, getFirestore } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { app } from "../firebase";
 
 const Register = () => {
   const [userInfo, setUserInfo] = useState({
     name: "",
     email: "",
     password: "",
-    avatar: "",
   });
   const [registerError, setRegisterError] = useState(false);
   const navigate = useNavigate();
+  const fileInput = useRef();
 
   const handleUserInfoChange = (event) => {
     const name = event.target.name;
@@ -70,10 +69,13 @@ const Register = () => {
   };
 
   const userImg = async (user) => {
-    const storage = getStorage(app);
+    const storage = getStorage();
     try {
       const storageRef = ref(storage, userInfo.name);
-      await uploadBytes(storageRef, userInfo.avatar);
+      const metadata = {
+        contentType: "image/jpeg",
+      };
+      await uploadBytes(storageRef, fileInput.current.files[0], metadata);
       await getDownloadURL(storageRef).then(async (downloadURL) => {
         await updateProfile(user, {
           displayName: userInfo.name,
@@ -87,8 +89,8 @@ const Register = () => {
   };
 
   const userDB = async (user, photoURL) => {
+    const db = getFirestore();
     try {
-      const db = getFirestore();
       await setDoc(doc(db, "users", user.uid), {
         uid: user.uid,
         displayName: user.displayName,
@@ -135,10 +137,8 @@ const Register = () => {
             <PhotoIcon fontSize="large" /> Add an avatar
             <input
               type="file"
-              name="avatar"
               accept=".png, .jpg, .jpeg"
-              value={userInfo.avatar}
-              onChange={handleUserInfoChange}
+              ref={fileInput}
             ></input>
           </label>
           <button type="submit">Sign Up</button>
