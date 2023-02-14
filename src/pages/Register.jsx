@@ -7,7 +7,6 @@ import {
   createUserWithEmailAndPassword,
 } from "firebase/auth";
 import { doc, setDoc, getFirestore } from "firebase/firestore";
-import { app } from "../firebase";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
@@ -38,7 +37,7 @@ const Register = () => {
 
   const createUser = () => {
     try {
-      const auth = getAuth(app);
+      const auth = getAuth();
       createUserWithEmailAndPassword(auth, userInfo.email, userInfo.password)
         .then((userCredential) => {
           const user = userCredential.user;
@@ -101,11 +100,13 @@ const Register = () => {
           <input
             type="email"
             name="email"
+            autoComplete="username"
             placeholder="email"
             value={userInfo.email}
             onChange={handleUserInfoChange}
           ></input>
           <input
+            autoComplete="new-password"
             type="password"
             name="password"
             placeholder="password"
