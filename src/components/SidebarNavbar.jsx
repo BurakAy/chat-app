@@ -4,8 +4,8 @@ import { getAuth, signOut } from "firebase/auth";
 
 const SidebarNavbar = () => {
   const handleSignOut = () => {
+    const auth = getAuth();
     try {
-      const auth = getAuth();
       signOut(auth);
     } catch (error) {
       console.log(`error signing out: ${error}`);
