@@ -1,22 +1,40 @@
 import "../styles/ChatPanelMessage.css";
-import userImage from "../assets/Burak_Ephesus.jpg";
+import { useContext, useEffect, useRef, useState } from "react";
+import { AuthContext } from "../context/AuthContext";
+import { ChatContext } from "../context/ChatContext";
 
-const ChatPanelMessage = () => {
+const ChatPanelMessage = (props) => {
+  const currentUser = useContext(AuthContext);
+  const { data } = useContext(ChatContext);
+  const [owner, setOwner] = useState(false);
+  const ref = useRef();
+
+  useEffect(() => {
+    props.message.senderId === currentUser.uid
+      ? setOwner(true)
+      : setOwner(false);
+  }, [owner]);
+
+  useEffect(() => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  }, [props.message]);
+
   return (
     <div className="chatpanelmessage--container">
-      <div className="chatpanelmessage--wrapper owner">
+      <div className={`chatpanelmessage--wrapper ${owner ? "owner" : ""}`}>
         <div className="chatpanelmessage--msg_info">
-          <img src={userImage} />
+          <img src={owner ? currentUser.photoURL : data.user.photoURL} />
           <span>time</span>
         </div>
-        <p className="chatpanelmessage--sent_msg">message</p>
-      </div>
-      <div className="chatpanelmessage--wrapper">
-        <div className="chatpanelmessage--msg_info">
-          <img src={userImage} />
-          <span>time</span>
+        <div className="chatpanelmessage--content">
+          <p className="chatpanelmessage--sent_msg">{props.message.text}</p>
+          {props.message.img && (
+            <img
+              className="chatpanelmessage--sent_img"
+              src={props.message.img}
+            />
+          )}
         </div>
-        <p className="chatpanelmessage--sent_msg">message</p>
       </div>
     </div>
   );
