@@ -29,27 +29,23 @@ const SidebarChats = () => {
   };
 
   const Chat = () => {
-    const userChats = Object.entries(chats)
-      ?.sort((a, b) => b[1].date - a[1].date)
-      .map((chat, i) => {
-        return (
-          <div
-            className="sidebarchat"
-            key={`${chat[i]}`}
-            onClick={() => handleSelect(chat[i + 1].userInfo)}
-          >
-            <img src={`${chat[i + 1].userInfo.photoURL}`} />
-            <div className="sidebarchat--chat_info">
-              <p className="sidebarchat--user">{`${
-                chat[i + 1].userInfo.displayName
-              }`}</p>
-              <p className="sidebarchat--user_msg">
-                {`${chat[i + 1].lastMessage?.text}`}
-              </p>
-            </div>
+    const userChats = Object.entries(chats)?.map((chat) => {
+      return (
+        <div
+          className="sidebarchat"
+          key={`${chat[0]}`}
+          onClick={() => handleSelect(chat[1].userInfo)}
+        >
+          <img src={`${chat[1].userInfo.photoURL}`} />
+          <div className="sidebarchat--chat_info">
+            <p className="sidebarchat--user">{`${chat[1].userInfo.displayName}`}</p>
+            <p className="sidebarchat--user_msg">
+              {`${chat[1].lastMessage?.text}`}
+            </p>
           </div>
-        );
-      });
+        </div>
+      );
+    });
     return userChats;
   };
 
