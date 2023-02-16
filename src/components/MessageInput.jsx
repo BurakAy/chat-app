@@ -12,6 +12,7 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { uuidv4 } from "@firebase/util";
+import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 
 const MessageInput = () => {
   const [text, setText] = useState("");
@@ -31,6 +32,7 @@ const MessageInput = () => {
 
   const handleSend = async () => {
     if (img) {
+      const storage = getStorage();
       const storageRef = ref(storage, uuidv4());
       await uploadBytes(storageRef, img);
       await getDownloadURL(storageRef).then(async (downloadURL) => {
