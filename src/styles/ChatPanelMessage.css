@@ -4,8 +4,8 @@
 
 .chatpanelmessage--wrapper {
     display: flex;
-    align-items: center;
-    gap: 10px
+    gap: 10px;
+    /* max-width: 50%; */
 }
 
 .chatpanelmessage--wrapper.owner {
@@ -32,16 +32,32 @@
     color: #333333
 }
 
+.chatpanelmessage--content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .chatpanelmessage--sent_msg {
     background: #f1faee;
     padding: 6px;
     margin: 0;
-    border-radius: 0 10px 10px;
+    border-radius: 10px 10px 10px 0px;
     font-size: .8rem;
-    max-width: 80%;
+    width: fit-content;
 }
 
 .owner .chatpanelmessage--sent_msg {
     border-radius: 10px 0 10px 10px;
     background: #219ebc;
+    align-self: flex-end;
+}
+
+.chatpanelmessage--sent_img {
+    width: 50%;
+    border-radius: 10px;
+}
+
+.owner .chatpanelmessage--sent_img {
+    align-self: flex-end;
 }
