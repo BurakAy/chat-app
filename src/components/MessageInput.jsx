@@ -8,6 +8,7 @@ import {
   arrayUnion,
   doc,
   getFirestore,
+  serverTimestamp,
   Timestamp,
   updateDoc,
 } from "firebase/firestore";
@@ -56,6 +57,22 @@ const MessageInput = () => {
         }),
       });
     }
+
+    await updateDoc(doc(db, "userChats", currentUser.uid), {
+      [`${data.chatId}.lastMessage`]: {
+        text,
+      },
+      [`${data.chatId}.date`]: serverTimestamp(),
+    });
+    await updateDoc(doc(db, "userChats", data.user.uid), {
+      [`${data.chatId}.lastMessage`]: {
+        text,
+      },
+      [`${data.chatId}.date`]: serverTimestamp(),
+    });
+
+    setText("");
+    setImg();
   };
 
   return (
