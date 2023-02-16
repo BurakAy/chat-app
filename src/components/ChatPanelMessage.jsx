@@ -16,11 +16,14 @@ const ChatPanelMessage = (props) => {
   }, [owner]);
 
   useEffect(() => {
-    ref.current?.scrollIntoView({ behavior: "smooth" });
+    ref.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+    });
   }, [props.message]);
 
   return (
-    <div className="chatpanelmessage--container">
+    <div ref={ref} className="chatpanelmessage--container">
       <div className={`chatpanelmessage--wrapper ${owner ? "owner" : ""}`}>
         <div className="chatpanelmessage--msg_info">
           <img src={owner ? currentUser.photoURL : data.user.photoURL} />
