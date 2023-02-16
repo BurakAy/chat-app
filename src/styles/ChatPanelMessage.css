@@ -48,7 +48,7 @@
 }
 
 .owner .chatpanelmessage--sent_msg {
-    border-radius: 10px 0 10px 10px;
+    border-radius: 10px 10px 0px 10px;
     background: #219ebc;
     align-self: flex-end;
 }
