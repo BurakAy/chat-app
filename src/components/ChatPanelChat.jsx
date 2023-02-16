@@ -20,7 +20,6 @@ const ChatPanelChat = () => {
   }, [data.chatId]);
 
   const chatMessage = messages.map((message) => {
-    console.log(message);
     return <ChatPanelMessage message={message} key={message.id} />;
   });
 
